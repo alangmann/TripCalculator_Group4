@@ -23,6 +23,7 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="test" />
+        <module name="trip-calculator" />
       </profile>
     </annotationProcessing>
   </component>
