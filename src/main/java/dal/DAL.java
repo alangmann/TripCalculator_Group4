@@ -11,8 +11,8 @@ import java.util.LinkedList;
  */
 public class DAL
 {
-    private String routesPath = System.getProperty("user.dir") + File.separator + "trunk" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "routes.csv";
-    private String sprit_dbPath = System.getProperty("user.dir") + File.separator + "trunk" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "sprit_db.csv";
+    private String routesPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "routes.csv";
+    private String sprit_dbPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "sprit_db.csv";
 
     public DAL()
     {

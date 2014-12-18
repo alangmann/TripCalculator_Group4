@@ -22,6 +22,11 @@ public class TripCalculator
         try
         {
             LinkedList<Route> routes = dal.getRoutes();
+            for(Route r : routes)
+            {
+                double co2 = r.getDistance()*0.1325*r.getSlope()*r.getSpecialFee();
+                System.out.println("Die Distanz:"+r.getDistance()+"km hat ein CO2 von:"+co2);
+            }
         } catch (IOException e)
         {
             JOptionPane.showMessageDialog(null, "Fehler beim einlesen!");
