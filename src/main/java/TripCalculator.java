@@ -1,5 +1,4 @@
-import beans.Route;
-import beans.RouteType;
+import beans.*;
 import dal.DAL;
 
 import javax.swing.*;
@@ -11,41 +10,48 @@ import java.util.LinkedList;
  */
 public class TripCalculator
 {
-    private DAL dal = new DAL();
 
-    public TripCalculator()
+    public Double calculateTrip(Route r)
     {
-        dal = new DAL();
+        double co2 = 0.1325;
+        if(r.getSlope()==-5)
+        {
+            co2 = 0;
+        }
+        if (RouteType.Highway == r.getTypeOfRoute())
+        {
+            return (Double)(r.getDistance() *  co2 * r.getSlope() * 1);
+        }
+        if (RouteType.CountryRoad == r.getTypeOfRoute())
+        {
+            return (Double)(r.getDistance() *  co2 * r.getSlope() * 1.2);
+        }
+        if (RouteType.GravelRoad == r.getTypeOfRoute())
+        {
+            return (Double)(r.getDistance() *  co2 * r.getSlope() * 2);
+        }
+        return null;
     }
 
-    public void calculateTrip(Double km, double co2, double slope,  RouteType rt)
+    public String getTypeOfVehicle(Vehicle v)
     {
-        try
+        if(v instanceof Car)
         {
-            LinkedList<Route> routes = dal.getRoutes();
-
-            if(km == null || km <= 0 || rt == null)
-            {
-                System.out.println("Eingabe ungueltig!");
-            }
-            else
-            {
-                if (RouteType.Highway == rt) {
-                    System.out.println(km * co2 * slope * 1);
-                }
-                if (RouteType.CountryRoad == rt) {
-                    System.out.println(km * co2 * slope * 1.2);
-                }
-                if (RouteType.GravelRoad == rt) {
-                    System.out.println(km * co2 * slope * 2);
-                }
-            }
-
+            return "Car";
         }
-        catch (IOException e)
+        else if(v instanceof Truck)
         {
-            JOptionPane.showMessageDialog(null, "Fehler beim einlesen!");
+            return "Truck";
         }
+        else
+        {
+            return null;
+        }
+    }
+
+    public Double calculateConsideredTrip(Vehicle v, Route r)
+    {
+        return 0.0;
     }
 
     public static void main(String[] args)
