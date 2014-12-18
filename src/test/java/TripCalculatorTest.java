@@ -15,8 +15,8 @@ public class TripCalculatorTest
     private TripCalculator calculator;
 
     @Test
-    public void testDummy()
+    public void testSimpleRoute()
     {
-
+            assertThat(calculator.calculateTrip(new Route(10, 1.0005, RouteType.Highway, 0)), equalTo(1.3256625));
     }
 }
