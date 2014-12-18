@@ -18,23 +18,27 @@ public class TripCalculator
         dal = new DAL();
     }
 
-    public void calculateTrip(double km, double co2, double slope,  RouteType rt)
+    public void calculateTrip(Double km, double co2, double slope,  RouteType rt)
     {
         try
         {
             LinkedList<Route> routes = dal.getRoutes();
 
-            if (RouteType.Highway == rt)
+            if(km == null || km <= 0 || rt == null)
             {
-                System.out.println(km * co2 * slope * 1);
+                System.out.println("Eingabe ungueltig!");
             }
-            if (RouteType.CountryRoad == rt)
+            else
             {
-                System.out.println(km * co2 * slope * 1.2);
-            }
-            if (RouteType.GravelRoad == rt)
-            {
-                System.out.println(km * co2 * slope * 2);
+                if (RouteType.Highway == rt) {
+                    System.out.println(km * co2 * slope * 1);
+                }
+                if (RouteType.CountryRoad == rt) {
+                    System.out.println(km * co2 * slope * 1.2);
+                }
+                if (RouteType.GravelRoad == rt) {
+                    System.out.println(km * co2 * slope * 2);
+                }
             }
 
         }
