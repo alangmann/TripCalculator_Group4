@@ -11,6 +11,13 @@ import java.util.LinkedList;
 public class TripCalculator
 {
 
+    private DAL dal;
+
+    public TripCalculator()
+    {
+        dal = new DAL();
+    }
+
     public Double calculateTrip(Route r)
     {
         double co2 = 0.1325;
@@ -51,7 +58,13 @@ public class TripCalculator
 
     public Double calculateConsideredTrip(Vehicle v, Route r)
     {
-        return 0.0;
+        double previousCalculation = calculateTrip(r);
+        if(getTypeOfVehicle(v).equals("Car"))
+        {
+            return previousCalculation+0.5/100;
+        }
+        else
+            return previousCalculation+0.05/100;
     }
 
     public static void main(String[] args)
