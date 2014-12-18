@@ -20,13 +20,24 @@ public class TripCalculator
 
     public void calculateTrip(double km, double co2, double slope,  RouteType rt)
     {
-        try {
+        try
+        {
             LinkedList<Route> routes = dal.getRoutes();
+            double routetypefactor;
+
             if (RouteType.Highway == rt)
             {
                 System.out.println(km * co2 * slope * 1);
-
             }
+            if (RouteType.CountryRoad == rt)
+            {
+                System.out.println(km * co2 * slope * 1.2);
+            }
+            if (RouteType.GravelRoad == rt)
+            {
+                System.out.println(km * co2 * slope * 2);
+            }
+
         }
         catch (IOException e)
         {
