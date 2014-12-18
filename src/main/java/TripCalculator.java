@@ -23,7 +23,6 @@ public class TripCalculator
         try
         {
             LinkedList<Route> routes = dal.getRoutes();
-            double routetypefactor;
 
             if (RouteType.Highway == rt)
             {
