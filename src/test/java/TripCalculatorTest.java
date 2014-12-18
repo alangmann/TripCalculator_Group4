@@ -1,13 +1,22 @@
 
+import beans.RouteType;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class TripCalculatorTest {
+public class TripCalculatorTest
+{
+    TripCalculator tc;
+    @Before
+    public void init()
+    {
+        tc  = new TripCalculator();
+    }
 
     @Test
-    public void testDummy()
+    public void test()
     {
-        assertTrue(true);
+        tc.calculateTrip(10, 0.1325, 1.0005, RouteType.CountryRoad);
     }
 }

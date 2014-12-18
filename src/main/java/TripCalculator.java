@@ -1,4 +1,5 @@
 import beans.Route;
+import beans.RouteType;
 import dal.DAL;
 
 import javax.swing.*;
@@ -17,17 +18,17 @@ public class TripCalculator
         dal = new DAL();
     }
 
-    public void calculateTrip()
+    public void calculateTrip(double km, double co2, double slope,  RouteType rt)
     {
-        try
-        {
+        try {
             LinkedList<Route> routes = dal.getRoutes();
-            for(Route r : routes)
+            if (RouteType.Highway == rt)
             {
-                double co2 = r.getDistance()*0.1325*r.getSlope()*r.getSpecialFee();
-                System.out.println("Die Distanz:"+r.getDistance()+"km hat ein CO2 von:"+co2);
+                System.out.println(km * co2 * slope * 1);
+
             }
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
             JOptionPane.showMessageDialog(null, "Fehler beim einlesen!");
         }
@@ -36,6 +37,5 @@ public class TripCalculator
     public static void main(String[] args)
     {
         TripCalculator calculator = new TripCalculator();
-        calculator.calculateTrip();
     }
 }

@@ -3,6 +3,7 @@ package dal;
 import beans.Route;
 import beans.RouteType;
 
+import javax.swing.*;
 import java.io.*;
 import java.util.LinkedList;
 
@@ -20,10 +21,14 @@ public class DAL
 
     public LinkedList<Route> getRoutes() throws IOException
     {
+
         LinkedList<Route> routes = new LinkedList<Route>();
+
         BufferedReader br = new BufferedReader(new FileReader(routesPath));
+
         String line;
         br.readLine();
+
         while ((line = br.readLine()) != null)
         {
             String[] data = line.split(";");

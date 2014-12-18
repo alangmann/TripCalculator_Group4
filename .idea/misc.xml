@@ -33,7 +33,12 @@
         <entry key="$PROJECT_DIR$">
           <value>
             <SvnBranchConfiguration>
-              <option name="trunkUrl" value="" />
+              <option name="branchUrls">
+                <list>
+                  <option value="https://github.com/alangmann/TripCalculator_Group4/branches" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://github.com/alangmann/TripCalculator_Group4/trunk" />
             </SvnBranchConfiguration>
           </value>
         </entry>
@@ -69,4 +74,3 @@
     </states>
   </component>
 </project>
-
