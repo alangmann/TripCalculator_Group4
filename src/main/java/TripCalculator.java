@@ -68,7 +68,7 @@ public class TripCalculator
             return previousCalculation+0.5/100;
         }
         else
-            return previousCalculation+0.05/100;
+            return previousCalculation+0.05/100+(0.05/100+v.getCargo()/100);
     }
 
     public Double getCostsofTrip(Route r, Vehicle v)

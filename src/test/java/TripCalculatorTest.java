@@ -27,6 +27,7 @@ public class TripCalculatorTest
     {
         assertThat(calculator.calculateTrip(new Route(10, 1.0005,null, 0)), equalTo(1.3256625000000002));
     }
+
     @Test
     public void testCostofRoute()
     {
