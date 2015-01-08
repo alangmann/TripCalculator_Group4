@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/trip-calculator.iml" filepath="$PROJECT_DIR$/trip-calculator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/trip-calculator.iml" filepath="$PROJECT_DIR$/trip-calculator.iml" />
     </modules>
   </component>
 </project>

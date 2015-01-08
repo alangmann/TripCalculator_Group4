@@ -20,6 +20,10 @@ public class TripCalculator
 
     public Double calculateTrip(Route r)
     {
+        if(r.getTypeOfRoute()==null)
+        {
+            return null;
+        }
         double co2 = 0.1325;
         if(r.getSlope()==-5)
         {
@@ -65,6 +69,11 @@ public class TripCalculator
         }
         else
             return previousCalculation+0.05/100;
+    }
+
+    public Double getCostsofTrip(Route r, Vehicle v)
+    {
+        return r.getDistance() * (v.getAverageConsumption()+v.getCargo()/100*r.getSlope())/100 * 1.321 + r.getSpecialFee();
     }
 
     public static void main(String[] args)
