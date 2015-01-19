@@ -21,7 +21,6 @@ public class DAL
 
     public LinkedList<Route> getRoutes() throws IOException
     {
-
         LinkedList<Route> routes = new LinkedList<Route>();
 
         BufferedReader br = new BufferedReader(new FileReader(routesPath));
@@ -41,4 +40,8 @@ public class DAL
         }
         return routes;
     }
+
+
+
+
 }

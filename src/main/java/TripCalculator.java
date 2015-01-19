@@ -20,11 +20,11 @@ public class TripCalculator
 
     public Double calculateTrip(Route r)
     {
-        if(r.getTypeOfRoute()==null)
+        double co2 = 0.1325;
+        if(r.getTypeOfRoute() == null)
         {
             return null;
         }
-        double co2 = 0.1325;
         if(r.getSlope()==-5)
         {
             co2 = 0;
@@ -60,21 +60,25 @@ public class TripCalculator
         }
     }
 
-    public Double calculateConsideredTrip(Vehicle v, Route r)
+    public Double calculateCo2Consumption(Vehicle v, Route r)
     {
-        double previousCalculation = calculateTrip(r);
+        double previousCalculation = this.calculateTrip(r);
         if(getTypeOfVehicle(v).equals("Car"))
         {
-            return previousCalculation+0.5/100;
+            return previousCalculation*0.5;
         }
         else
-            return previousCalculation+0.05/100+(0.05/100+v.getCargo()/100);
+            return previousCalculation*(0.05/100+(0.05/100*v.getCargo()/100));
     }
 
-    public Double getCostsofTrip(Route r, Vehicle v)
+    public Double calculateTotalCostofRoute(Route r, Vehicle v, String dayofweek)
     {
-        return r.getDistance() * (v.getAverageConsumption()+v.getCargo()/100*r.getSlope())/100 * 1.321 + r.getSpecialFee();
+        double x = (v.getAverageConsumption()+v.getCargo()/100*r.getSlope()/100);
+        return r.getDistance()*x/100*1.321+r.getSpecialFee()*5.0625;
     }
+
+
+
 
     public static void main(String[] args)
     {
