@@ -56,43 +56,43 @@ public class TripCalculatorTest
     @Test
     public void testCostofRouteDiesel()
     {
-        assertThat(calculator.calculateTotalCostofRoute(liste.get(0), new Vehicle(35, FuelType.Diesel,20000),"Monday"), equalTo(31.256999999999998)); // Runden
+        assertThat(calculator.calculateTotalCostOfRoute(liste.get(0), new Vehicle(35, FuelType.Diesel,20000),"Monday"), equalTo(31.256999999999998)); // Runden
     }
 
     @Test
     public void testCostofRoutePatrol()
     {
-        assertThat(calculator.calculateTotalCostofRoute(liste.get(0), new Vehicle(35, FuelType.Patrol,20000),"Friday"), equalTo(31.464));
+        assertThat(calculator.calculateTotalCostOfRoute(liste.get(0), new Vehicle(35, FuelType.Patrol,20000),"Friday"), equalTo(31.464));
     }
 
     @Test
     public void testCostofRoutePetrol()
     {
-        assertThat(calculator.calculateTotalCostofRoute(liste.get(0), new Vehicle(35, FuelType.Patrol,20000),"Monday"), equalTo(31.8735));
+        assertThat(calculator.calculateTotalCostOfRoute(liste.get(0), new Vehicle(35, FuelType.Patrol,20000),"Monday"), equalTo(31.8735));
     }
 
     @Test
     public void testCostRoute_FuelTypeNull()
     {
-        assertThat(calculator.calculateTotalCostofRoute(liste.get(0), new Vehicle(35, null,20000),"Monday"), equalTo(null));
+        assertThat(calculator.calculateTotalCostOfRoute(liste.get(0), new Vehicle(35, null,20000),"Monday"), equalTo(null));
     }
 
     @Test
     public void testCostRoute_WrongDay()
     {
-        assertThat(calculator.calculateTotalCostofRoute(liste.get(0), new Vehicle(35, null,20000),"XYZ"), equalTo(null));
+        assertThat(calculator.calculateTotalCostOfRoute(liste.get(0), new Vehicle(35, null,20000),"XYZ"), equalTo(null));
     }
 
     @Test
     public void testCostRoute_DayNull()
     {
-        assertThat(calculator.calculateTotalCostofRoute(liste.get(0), new Vehicle(35, FuelType.Diesel,20000),null), equalTo(null));
+        assertThat(calculator.calculateTotalCostOfRoute(liste.get(0), new Vehicle(35, FuelType.Diesel,20000),null), equalTo(null));
     }
 
     @Test
     public void testCostRoute_RouteNull()
     {
-        assertThat(calculator.calculateTotalCostofRoute(null, new Vehicle(35, FuelType.Patrol,20000),"Monday"), equalTo(null));
+        assertThat(calculator.calculateTotalCostOfRoute(null, new Vehicle(35, FuelType.Patrol,20000),"Monday"), equalTo(null));
     }
 
     @Test

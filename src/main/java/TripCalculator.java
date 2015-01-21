@@ -12,17 +12,19 @@ import java.util.LinkedList;
  */
 public class TripCalculator
 {
+    final double CO2_CONSUMPTION_DIESEL = 0.0265;
+    final double CO2_CONSUMPTION_PETROL = 0.0236;
 
     public double calculateTrip(Route r, Vehicle v)
     {
         if(r!=null) {
         double co2 = 0;
         if(v.getTypeofFuel() == FuelType.Diesel) {
-            co2=0.0265 * r.getSlope();
+            co2=CO2_CONSUMPTION_DIESEL * r.getSlope();
         }
 
         if(v.getTypeofFuel() == FuelType.Patrol) {
-            co2=0.0236 * r.getSlope();
+            co2=CO2_CONSUMPTION_PETROL * r.getSlope();
         }
 
 
@@ -74,11 +76,11 @@ public class TripCalculator
             {
                 double co2 = 0;
                 if(v.getTypeofFuel() == FuelType.Diesel) {
-                    co2=0.0265 * r.getSlope();
+                    co2=CO2_CONSUMPTION_DIESEL * r.getSlope();
                 }
 
                 if(v.getTypeofFuel() == FuelType.Patrol) {
-                    co2=0.0236 * r.getSlope();
+                    co2=CO2_CONSUMPTION_PETROL * r.getSlope();
                 }
 
                 double x = co2 + (co2/r.getDistance());
@@ -99,11 +101,11 @@ public class TripCalculator
             {
                 double co2 = 0;
                 if(v.getTypeofFuel() == FuelType.Diesel) {
-                    co2=0.0265 * r.getSlope();
+                    co2=CO2_CONSUMPTION_DIESEL * r.getSlope();
                 }
 
                 if(v.getTypeofFuel() == FuelType.Patrol) {
-                    co2=0.0236 * r.getSlope();
+                    co2=CO2_CONSUMPTION_PETROL * r.getSlope();
                 }
 
                 double x = co2 + (co2/r.getDistance());
@@ -130,7 +132,7 @@ public class TripCalculator
 
     }
 
-    public Double calculateTotalCostofRoute(Route r, Vehicle v, String dayofweek)
+    public Double calculateTotalCostOfRoute(Route r, Vehicle v, String dayofweek)
     {
         DAL d = new DAL();
         ArrayList<Double> preise = null;
