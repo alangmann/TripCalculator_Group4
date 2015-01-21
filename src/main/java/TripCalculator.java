@@ -13,11 +13,20 @@ import java.util.LinkedList;
 public class TripCalculator
 {
 
-    public double calculateTrip(Route r)
+    public double calculateTrip(Route r, Vehicle v)
     {
-
-        double co2 = 0.1325;
         if(r!=null) {
+        double co2 = 0;
+        if(v.getTypeofFuel() == FuelType.Diesel) {
+            co2=0.0265 * r.getSlope();
+        }
+
+        if(v.getTypeofFuel() == FuelType.Patrol) {
+            co2=0.0236 * r.getSlope();
+        }
+
+
+
             if (r.getTypeOfRoute() == null) {
                 return 0;
             }
@@ -59,26 +68,45 @@ public class TripCalculator
 
     public Double calculateCo2Consumption(Vehicle v, Route r)
     {
-        if(r!=null)
+        if(r!=null && v!=null)
         {
             if (getTypeOfVehicle(v).equals("Car"))
             {
-                double x = 0.1325 + (0.5/r.getDistance()/100);
+                double co2 = 0;
+                if(v.getTypeofFuel() == FuelType.Diesel) {
+                    co2=0.0265 * r.getSlope();
+                }
+
+                if(v.getTypeofFuel() == FuelType.Patrol) {
+                    co2=0.0236 * r.getSlope();
+                }
+
+                double x = co2 + (co2/r.getDistance());
                 if (RouteType.Highway == r.getTypeOfRoute())
                 {
-                    System.out.println(r.getDistance() * 1000 + r.getSlope() / 1000);
                     return (r.getDistance() * x * (r.getDistance()  + r.getSlope() / 1000) * 1);
                 }
-                if (RouteType.CountryRoad == r.getTypeOfRoute()) {System.out.println(r.getDistance() * 1000 + r.getSlope() / 1000);
+                if (RouteType.CountryRoad == r.getTypeOfRoute())
+                {
                     return (r.getDistance() * x * (r.getDistance()  + r.getSlope() / 1000) * 1.2);
                 }
-                if (RouteType.GravelRoad == r.getTypeOfRoute()) {System.out.println(r.getDistance() * 1000 + r.getSlope() / 1000);
+                if (RouteType.GravelRoad == r.getTypeOfRoute())
+                {
                     return (r.getDistance() * x * (r.getDistance()  + r.getSlope() / 1000) * 2);
                 }
             }
             if (getTypeOfVehicle(v).equals("Truck"))
             {
-                double x = 0.1325 + v.getCargo()/100*5;
+                double co2 = 0;
+                if(v.getTypeofFuel() == FuelType.Diesel) {
+                    co2=0.0265 * r.getSlope();
+                }
+
+                if(v.getTypeofFuel() == FuelType.Patrol) {
+                    co2=0.0236 * r.getSlope();
+                }
+
+                double x = co2 + (co2/r.getDistance());
                 if (RouteType.Highway == r.getTypeOfRoute()) {
                     return (r.getDistance() * x * (r.getDistance() * 1000 + r.getSlope() / 1000) * 1);
                 }
