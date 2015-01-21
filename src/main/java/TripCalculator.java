@@ -15,6 +15,7 @@ public class TripCalculator
 
     public double calculateTrip(Route r)
     {
+
         double co2 = 0.1325;
         if(r!=null) {
             if (r.getTypeOfRoute() == null) {
@@ -24,13 +25,13 @@ public class TripCalculator
                 co2 = 0;
             }
             if (RouteType.Highway == r.getTypeOfRoute()) {
-                return (r.getDistance() * co2 * r.getDistance() * 1000 + r.getSlope() / 1000 * 1);
+                return (r.getDistance() * co2 * r.getDistance()  + r.getSlope() / 1000 * 1);
             }
             if (RouteType.CountryRoad == r.getTypeOfRoute()) {
-                return (r.getDistance() * co2 * r.getDistance() * 1000 + r.getSlope() / 1000 * 1.2);
+                return (r.getDistance() * co2 * r.getDistance()  + r.getSlope() / 1000 * 1.2);
             }
             if (RouteType.GravelRoad == r.getTypeOfRoute()) {
-                return (r.getDistance() * co2 * r.getDistance() * 1000 + r.getSlope() / 1000 * 2);
+                return (r.getDistance() * co2 * r.getDistance()  + r.getSlope() / 1000 * 2);
             }
             return 0;
         }
@@ -58,13 +59,37 @@ public class TripCalculator
 
     public Double calculateCo2Consumption(Vehicle v, Route r)
     {
-        if(r!=null) {
-            double previousCalculation = this.calculateTrip(r);
-            if (getTypeOfVehicle(v).equals("Car")) {
-                return previousCalculation + (r.getDistance() / 100 * 0.5);
+        if(r!=null)
+        {
+            if (getTypeOfVehicle(v).equals("Car"))
+            {
+                System.out.println(r.getDistance()/100*0.5);
+                double x = 0.1325 + (0.5/r.getDistance()/100);
+                if (RouteType.Highway == r.getTypeOfRoute())
+                {
+                    System.out.println(r.getDistance() * 1000 + r.getSlope() / 1000);
+                    return (r.getDistance() * x * (r.getDistance()  + r.getSlope() / 1000) * 1);
+                }
+                if (RouteType.CountryRoad == r.getTypeOfRoute()) {System.out.println(r.getDistance() * 1000 + r.getSlope() / 1000);
+                    return (r.getDistance() * x * (r.getDistance()  + r.getSlope() / 1000) * 1.2);
+                }
+                if (RouteType.GravelRoad == r.getTypeOfRoute()) {System.out.println(r.getDistance() * 1000 + r.getSlope() / 1000);
+                    return (r.getDistance() * x * (r.getDistance()  + r.getSlope() / 1000) * 2);
+                }
             }
             if (getTypeOfVehicle(v).equals("Truck"))
-                return previousCalculation * (0.05 / 100 + (0.05 / 100 * v.getCargo() / 100));
+            {
+                double x = 0.1325 + v.getCargo()/100*5;
+                if (RouteType.Highway == r.getTypeOfRoute()) {
+                    return (r.getDistance() * x * (r.getDistance() * 1000 + r.getSlope() / 1000) * 1);
+                }
+                if (RouteType.CountryRoad == r.getTypeOfRoute()) {
+                    return (r.getDistance() * x * (r.getDistance() * 1000 + r.getSlope() / 1000) * 1.2);
+                }
+                if (RouteType.GravelRoad == r.getTypeOfRoute()) {
+                    return (r.getDistance() * x * (r.getDistance() * 1000 + r.getSlope() / 1000) * 2);
+                }
+            }
 
             else {
                 return 0.;
@@ -74,6 +99,7 @@ public class TripCalculator
         {
             return null;
         }
+        return null;
 
     }
 

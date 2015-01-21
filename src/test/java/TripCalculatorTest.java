@@ -31,7 +31,7 @@ public class TripCalculatorTest
     @Test
     public void calculateTripSimple()
     {
-        assertThat(calculator.calculateTrip(liste.get(0)),equalTo(13250.005000000001));
+        assertThat(calculator.calculateTrip(liste.get(0)),equalTo(13.255000000000003));
     }
 
     @Test
@@ -70,5 +70,12 @@ public class TripCalculatorTest
     {
         assertThat(calculator.calculateTotalCostofRoute(null, new Vehicle(35, FuelType.Patrol,20000),"Monday"), equalTo(null));
     }
+
+    @Test
+    public void testCo2()
+    {
+        assertThat(calculator.calculateCo2Consumption((new Car(5, FuelType.Patrol,100)), liste.get(0)), equalTo(null));
+    }
+
 
 }
