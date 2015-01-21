@@ -40,45 +40,4 @@ public class Route
     }
 
 
-    @Override
-    public boolean equals(Object o)
-    {
-        if (this == o) return true;
-        if (!(o instanceof Route)) return false;
-
-        Route route = (Route) o;
-
-        if (Double.compare(route.distance, distance) != 0) return false;
-        if (Double.compare(route.slope, slope) != 0) return false;
-        if (Double.compare(route.specialFee, specialFee) != 0) return false;
-        if (typeOfRoute != route.typeOfRoute) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode()
-    {
-        int result;
-        long temp;
-        temp = Double.doubleToLongBits(distance);
-        result = (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (typeOfRoute != null ? typeOfRoute.hashCode() : 0);
-        temp = Double.doubleToLongBits(slope);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(specialFee);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "Route{" +
-                "distance=" + distance +
-                ", typeOfRoute=" + typeOfRoute +
-                ", slope=" + slope +
-                ", specialFee=" + specialFee +
-                '}';
-    }
 }

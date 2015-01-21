@@ -13,13 +13,6 @@ import java.util.LinkedList;
 public class TripCalculator
 {
 
-    private DAL dal;
-
-    public TripCalculator()
-    {
-        dal = new DAL();
-    }
-
     public double calculateTrip(Route r)
     {
         double co2 = 0.1325;
@@ -65,29 +58,22 @@ public class TripCalculator
 
     public Double calculateCo2Consumption(Vehicle v, Route r)
     {
-        System.out.println(r.getSlope());
-        double co2 = 0.1325;
-        if(r.getTypeOfRoute() == null)
-        {
-            return 0.;
+        if(r!=null) {
+            double previousCalculation = this.calculateTrip(r);
+            if (getTypeOfVehicle(v).equals("Car")) {
+                return previousCalculation + (r.getDistance() / 100 * 0.5);
+            }
+            if (getTypeOfVehicle(v).equals("Truck"))
+                return previousCalculation * (0.05 / 100 + (0.05 / 100 * v.getCargo() / 100));
+
+            else {
+                return 0.;
+            }
         }
-        if(r.getSlope()==-5)
+        else
         {
-            co2 = 0;
+            return null;
         }
-        if (RouteType.Highway == r.getTypeOfRoute())
-        {
-            return ((r.getDistance() *  co2 * r.getDistance()*1000+r.getSlope()/1000) * 1);
-        }
-        if (RouteType.CountryRoad == r.getTypeOfRoute())
-        {
-            return  ((r.getDistance() *  co2 * r.getDistance()*1000+r.getSlope()/1000) * 1.2);
-        }
-        if (RouteType.GravelRoad == r.getTypeOfRoute())
-        {
-            return  ((r.getDistance() *  co2 * r.getDistance()*1000+r.getSlope()/1000) * 2);
-        }
-        return 0.;
 
     }
 
@@ -100,8 +86,8 @@ public class TripCalculator
                 preise = d.getSprit(dayofweek);
 
             } catch (IOException e) {
-                System.out.println("Fehler beim Auslesen der Preise!");
 
+                System.out.println("Fehler beim Auslesen der Preise!");
             }
 
             if (v.getTypeofFuel() == FuelType.Diesel) {
@@ -124,8 +110,6 @@ public class TripCalculator
 
 
     }
-
-
 
 
     public static void main(String[] args)

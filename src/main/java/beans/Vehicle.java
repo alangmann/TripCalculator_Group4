@@ -29,22 +29,4 @@ public class Vehicle
         return cargo;
     }
 
-
-
-    @Override
-    public boolean equals(Object o)
-    {
-        if (this == o) return true;
-        if (!(o instanceof Vehicle)) return false;
-
-        Vehicle vehicle = (Vehicle) o;
-
-        if (Double.compare(vehicle.averageConsumption, averageConsumption) != 0) return false;
-        if (cargo != vehicle.cargo) return false;
-        if (typeOfFuel != vehicle.typeOfFuel) return false;
-
-        return true;
-    }
-
-
 }
