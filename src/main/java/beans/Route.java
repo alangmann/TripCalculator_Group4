@@ -23,40 +23,24 @@ public class Route
         return distance;
     }
 
-    public void setDistance(double distance)
-    {
-        this.distance = distance;
-    }
 
     public RouteType getTypeOfRoute()
     {
         return typeOfRoute;
     }
 
-    public void setTypeOfRoute(RouteType typeOfRoute)
-    {
-        this.typeOfRoute = typeOfRoute;
-    }
 
     public double getSlope()
     {
         return slope;
     }
 
-    public void setSlope(double slope)
-    {
-        this.slope = slope;
-    }
 
     public double getSpecialFee()
     {
         return specialFee;
     }
 
-    public void setSpecialFee(double specialFee)
-    {
-        this.specialFee = specialFee;
-    }
 
     @Override
     public boolean equals(Object o)

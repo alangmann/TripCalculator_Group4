@@ -5,6 +5,8 @@ import beans.RouteType;
 
 import javax.swing.*;
 import java.io.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -40,6 +42,35 @@ public class DAL
         }
         return routes;
     }
+
+    public  ArrayList<Double> getSprit(String dayofweek) throws IOException
+    {
+
+        BufferedReader br = new BufferedReader(new FileReader(sprit_dbPath));
+        String line;
+        br.readLine();
+
+        while ((line = br.readLine()) != null)
+        {
+            String data[] = line.split(";");
+            String day = data[0];
+            double diesel = Double.parseDouble(data[1].replace(',','.'));
+            double petrol = Double.parseDouble(data[2].replace(',','.'));
+
+            if(day.equals(dayofweek))
+            {
+                ArrayList<Double> liste = new ArrayList<Double>();
+                liste.add(diesel);
+                liste.add(petrol);
+                return liste;
+            }
+        }
+
+        return null;
+
+
+    }
+
 
 
 

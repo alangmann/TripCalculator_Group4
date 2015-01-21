@@ -21,19 +21,9 @@ public class Vehicle
         return averageConsumption;
     }
 
-    public void setAverageConsumption(double averageConsumption)
-    {
-        this.averageConsumption = averageConsumption;
-    }
-
-    public FuelType getTypeOfFuel()
+    public FuelType getTypeofFuel()
     {
         return typeOfFuel;
-    }
-
-    public void setTypeOfFuel(FuelType typeOfFuel)
-    {
-        this.typeOfFuel = typeOfFuel;
     }
 
     public int getCargo()
@@ -41,10 +31,7 @@ public class Vehicle
         return cargo;
     }
 
-    public void setCargo(int cargo)
-    {
-        this.cargo = cargo;
-    }
+
 
     @Override
     public boolean equals(Object o)

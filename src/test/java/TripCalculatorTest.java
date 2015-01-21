@@ -1,5 +1,6 @@
 import beans.*;
 import dal.DAL;
+import org.hamcrest.core.IsEqual;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -30,25 +31,25 @@ public class TripCalculatorTest
     @Test
     public void testSimpleRoute()
     {
-        assertThat(calculator.calculateTrip(new Route(10, 1.0005, RouteType.Highway, 0)), equalTo(1.3256625000000002));
+        assertThat(calculator.calculateTrip(liste.get(0)),equalTo(13250.005000000001));
     }
 
     @Test
     public void testSimpleRoute_TypeNull()
     {
-        assertThat(calculator.calculateTrip(new Route(10, 1.0005,null, 0)), equalTo(1.3256625000000002));
+        assertThat(calculator.calculateTrip(new Route(10, 1.0005,null, 0)), equalTo(0.));
     }
 
     @Test
-    public void testCo2()
-    {
-        assertThat(calculator.calculateCo2Consumption(new Car(5, FuelType.Diesel, 100), liste.get(0)), equalTo(1.45822875));
-    }
-
-    @Test
-    public void testCostofRoute()
+    public void testCostofRouteDiesel()
     {
         assertThat(calculator.calculateTotalCostofRoute(liste.get(0), new Vehicle(35, FuelType.Diesel,20000),"Monday"), equalTo(31.256999999999998)); // Runden
+    }
+
+    @Test
+    public void testCostofRoutePetrol()
+    {
+        assertThat(calculator.calculateTotalCostofRoute(liste.get(0), new Vehicle(35, FuelType.Patrol,20000),"Monday"), equalTo(31.8735)); // Runden
     }
 
 
