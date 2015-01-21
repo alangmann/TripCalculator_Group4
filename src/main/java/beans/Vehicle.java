@@ -1,8 +1,6 @@
 package beans;
 
-/**
- * Created by Enis Lushtaku on 04.12.2014.
- */
+
 public class Vehicle
 {
     private double averageConsumption;
@@ -48,25 +46,5 @@ public class Vehicle
         return true;
     }
 
-    @Override
-    public int hashCode()
-    {
-        int result;
-        long temp;
-        temp = Double.doubleToLongBits(averageConsumption);
-        result = (int) (temp ^ (temp >>> 32));
-        result = 31 * result + typeOfFuel.hashCode();
-        result = 31 * result + cargo;
-        return result;
-    }
 
-    @Override
-    public String toString()
-    {
-        return "Vehicle{" +
-                "averageConsumption=" + averageConsumption +
-                ", typeOfFuel=" + typeOfFuel +
-                ", cargo=" + cargo +
-                '}';
-    }
 }

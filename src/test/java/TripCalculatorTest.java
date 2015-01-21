@@ -29,7 +29,7 @@ public class TripCalculatorTest
 
 
     @Test
-    public void testSimpleRoute()
+    public void calculateTripSimple()
     {
         assertThat(calculator.calculateTrip(liste.get(0)),equalTo(13250.005000000001));
     }
@@ -41,6 +41,13 @@ public class TripCalculatorTest
     }
 
     @Test
+    public void calculateRouteTest_RouteNull()
+    {
+        assertThat(calculator.calculateTrip(null), equalTo(0.));
+    }
+
+
+    @Test
     public void testCostofRouteDiesel()
     {
         assertThat(calculator.calculateTotalCostofRoute(liste.get(0), new Vehicle(35, FuelType.Diesel,20000),"Monday"), equalTo(31.256999999999998)); // Runden
@@ -49,8 +56,19 @@ public class TripCalculatorTest
     @Test
     public void testCostofRoutePetrol()
     {
-        assertThat(calculator.calculateTotalCostofRoute(liste.get(0), new Vehicle(35, FuelType.Patrol,20000),"Monday"), equalTo(31.8735)); // Runden
+        assertThat(calculator.calculateTotalCostofRoute(liste.get(0), new Vehicle(35, FuelType.Patrol,20000),"Monday"), equalTo(31.8735));
     }
 
+    @Test
+    public void testCostRoute_FuelTypeNull()
+    {
+        assertThat(calculator.calculateTotalCostofRoute(liste.get(0), new Vehicle(35, null,20000),"Monday"), equalTo(null));
+    }
+
+    @Test
+    public void testCostRoute_RouteNull()
+    {
+        assertThat(calculator.calculateTotalCostofRoute(null, new Vehicle(35, FuelType.Patrol,20000),"Monday"), equalTo(null));
+    }
 
 }

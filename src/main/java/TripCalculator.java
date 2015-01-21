@@ -23,27 +23,28 @@ public class TripCalculator
     public double calculateTrip(Route r)
     {
         double co2 = 0.1325;
-        if(r.getTypeOfRoute() == null)
+        if(r!=null) {
+            if (r.getTypeOfRoute() == null) {
+                return 0;
+            }
+            if (r.getSlope() == -5) {
+                co2 = 0;
+            }
+            if (RouteType.Highway == r.getTypeOfRoute()) {
+                return (r.getDistance() * co2 * r.getDistance() * 1000 + r.getSlope() / 1000 * 1);
+            }
+            if (RouteType.CountryRoad == r.getTypeOfRoute()) {
+                return (r.getDistance() * co2 * r.getDistance() * 1000 + r.getSlope() / 1000 * 1.2);
+            }
+            if (RouteType.GravelRoad == r.getTypeOfRoute()) {
+                return (r.getDistance() * co2 * r.getDistance() * 1000 + r.getSlope() / 1000 * 2);
+            }
+            return 0;
+        }
+        else
         {
             return 0;
         }
-        if(r.getSlope()==-5)
-        {
-            co2 = 0;
-        }
-        if (RouteType.Highway == r.getTypeOfRoute())
-        {
-            return (r.getDistance() *  co2 * r.getDistance()*1000+r.getSlope()/1000 * 1);
-        }
-        if (RouteType.CountryRoad == r.getTypeOfRoute())
-        {
-            return  (r.getDistance() *  co2 * r.getDistance()*1000+r.getSlope()/1000 * 1.2);
-        }
-        if (RouteType.GravelRoad == r.getTypeOfRoute())
-        {
-            return  (r.getDistance() *  co2 * r.getDistance()*1000+r.getSlope()/1000 * 2);
-        }
-        return 0;
     }
 
     public String getTypeOfVehicle(Vehicle v)
@@ -94,30 +95,29 @@ public class TripCalculator
     {
         DAL d = new DAL();
         ArrayList<Double> preise = null;
-        try
-        {
-             preise = d.getSprit(dayofweek);
+        if(r!=null && v!=null) {
+            try {
+                preise = d.getSprit(dayofweek);
 
-        }
-        catch (IOException e)
-        {
-            System.out.println("Fehler beim Auslesen der Preise!");
+            } catch (IOException e) {
+                System.out.println("Fehler beim Auslesen der Preise!");
 
-        }
+            }
 
-        if(v.getTypeofFuel() == FuelType.Diesel)
-        {
-            double x = (v.getAverageConsumption()+v.getCargo()/100*r.getSlope()/100);
-            return r.getDistance()*x/100*preise.get(0)+r.getSpecialFee()*5.0625;
-        }
-        if(v.getTypeofFuel() == FuelType.Patrol)
-        {
-            double x = (v.getAverageConsumption()+v.getCargo()/100*r.getSlope()/100);
-            return r.getDistance()*x/100*preise.get(1)+r.getSpecialFee()*5.0625;
+            if (v.getTypeofFuel() == FuelType.Diesel) {
+                double x = (v.getAverageConsumption() + v.getCargo() / 100 * r.getSlope() / 100);
+                return r.getDistance() * x / 100 * preise.get(0) + r.getSpecialFee() * 5.0625;
+            }
+            if (v.getTypeofFuel() == FuelType.Patrol) {
+                double x = (v.getAverageConsumption() + v.getCargo() / 100 * r.getSlope() / 100);
+                return r.getDistance() * x / 100 * preise.get(1) + r.getSpecialFee() * 5.0625;
+            } else {
+                return null;
+            }
         }
         else
         {
-            return null;
+            return  null;
         }
 
 
