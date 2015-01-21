@@ -71,11 +71,7 @@ public class TripCalculatorTest
         assertThat(calculator.calculateTotalCostofRoute(null, new Vehicle(35, FuelType.Patrol,20000),"Monday"), equalTo(null));
     }
 
-    @Test
-    public void testCo2()
-    {
-        assertThat(calculator.calculateCo2Consumption((new Car(5, FuelType.Patrol,100)), liste.get(0)), equalTo(null));
-    }
+
 
 
 }

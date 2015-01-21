@@ -63,7 +63,6 @@ public class TripCalculator
         {
             if (getTypeOfVehicle(v).equals("Car"))
             {
-                System.out.println(r.getDistance()/100*0.5);
                 double x = 0.1325 + (0.5/r.getDistance()/100);
                 if (RouteType.Highway == r.getTypeOfRoute())
                 {
