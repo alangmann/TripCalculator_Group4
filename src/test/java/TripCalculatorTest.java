@@ -29,9 +29,15 @@ public class TripCalculatorTest
 
 
     @Test
-    public void calculateTripSimple()
+    public void calculateTripSimpleDiesel()
     {
         assertThat(calculator.calculateTrip(liste.get(0), new Vehicle(5, FuelType.Diesel, 100)),equalTo(13.255000000000003));
+    }
+
+    @Test
+    public void calculateTripSimplePatrol()
+    {
+        assertThat(calculator.calculateTrip(liste.get(0), new Vehicle(5, FuelType.Patrol, 100)),equalTo(11.805));
     }
 
     @Test
@@ -56,7 +62,7 @@ public class TripCalculatorTest
     @Test
     public void testCostofRoutePatrol()
     {
-        assertThat(calculator.calculateTotalCostofRoute(liste.get(0), new Vehicle(35, FuelType.Patrol,20000),"Friday"), equalTo(31.464)); // Runden
+        assertThat(calculator.calculateTotalCostofRoute(liste.get(0), new Vehicle(35, FuelType.Patrol,20000),"Friday"), equalTo(31.464));
     }
 
     @Test
@@ -72,6 +78,18 @@ public class TripCalculatorTest
     }
 
     @Test
+    public void testCostRoute_WrongDay()
+    {
+        assertThat(calculator.calculateTotalCostofRoute(liste.get(0), new Vehicle(35, null,20000),"XYZ"), equalTo(null));
+    }
+
+    @Test
+    public void testCostRoute_DayNull()
+    {
+        assertThat(calculator.calculateTotalCostofRoute(liste.get(0), new Vehicle(35, FuelType.Diesel,20000),null), equalTo(null));
+    }
+
+    @Test
     public void testCostRoute_RouteNull()
     {
         assertThat(calculator.calculateTotalCostofRoute(null, new Vehicle(35, FuelType.Patrol,20000),"Monday"), equalTo(null));
@@ -83,10 +101,17 @@ public class TripCalculatorTest
         assertThat(calculator.calculateCo2Consumption( new Car(5, FuelType.Diesel,100),liste.get(0)), equalTo(14.582287500000003)); // Runden
     }
 
+
     @Test
-    public void testCo2Null()
+    public void testCo2VehicleNull()
     {
         assertThat(calculator.calculateCo2Consumption(null,liste.get(0)), equalTo(null)); // Runden
+    }
+
+    @Test
+    public void testCo2RouteNull()
+    {
+        assertThat(calculator.calculateCo2Consumption(new Car(5, FuelType.Diesel,100),null), equalTo(null)); // Runden
     }
 
 
