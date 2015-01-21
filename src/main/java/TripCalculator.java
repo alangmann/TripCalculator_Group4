@@ -136,7 +136,7 @@ public class TripCalculator
     {
         DAL d = new DAL();
         ArrayList<Double> preise = null;
-        if(r!=null && v!=null) {
+        if(r!=null && v!=null && dayofweek!= null) {
             try {
                 preise = d.getSprit(dayofweek);
 
