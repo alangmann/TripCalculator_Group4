@@ -26,6 +26,9 @@
         <module name="trip-calculator" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="trip-calculator" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 
