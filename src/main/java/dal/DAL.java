@@ -2,6 +2,7 @@ package dal;
 
 import beans.Route;
 import beans.RouteType;
+import org.springframework.stereotype.Repository;
 
 import javax.swing.*;
 import java.io.*;
@@ -12,6 +13,7 @@ import java.util.LinkedList;
 /**
  * Created by Enis Lushtaku on 04.12.2014.
  */
+@Repository("DAL")
 public class DAL
 {
     private String routesPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "routes.csv";

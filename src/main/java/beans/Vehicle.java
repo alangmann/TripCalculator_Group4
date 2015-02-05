@@ -1,6 +1,8 @@
 package beans;
 
+import org.springframework.stereotype.Repository;
 
+@Repository("Vehicle")
 public class Vehicle
 {
     private double averageConsumption;

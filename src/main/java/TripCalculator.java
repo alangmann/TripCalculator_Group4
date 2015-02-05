@@ -26,9 +26,6 @@ public class TripCalculator
         if(v.getTypeofFuel() == FuelType.Patrol) {
             co2=CO2_CONSUMPTION_PETROL * r.getSlope();
         }
-
-
-
             if (r.getTypeOfRoute() == null) {
                 return 0;
             }
