@@ -1,20 +1,21 @@
+package calculator;
+
 import beans.*;
 import dal.DAL;
+import org.springframework.stereotype.Repository;
 
-import javax.swing.*;
-import java.awt.geom.Arc2D;
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
-/**
- * Created by andreas.langmann on 12.11.2014.
- */
+@Repository("calculator.TripCalculator")
 public class TripCalculator
 {
     final double CO2_CONSUMPTION_DIESEL = 0.0265;
     final double CO2_CONSUMPTION_PETROL = 0.0236;
 
+    @Resource(name = "DAL")
+    private DAL d;
     public double calculateTrip(Route r, Vehicle v)
     {
         if(r!=null) {
@@ -131,7 +132,7 @@ public class TripCalculator
 
     public Double calculateTotalCostOfRoute(Route r, Vehicle v, String dayofweek)
     {
-        DAL d = new DAL();
+
         ArrayList<Double> preise = null;
         if(r!=null && v!=null && dayofweek!= null) {
             try {

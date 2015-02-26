@@ -1,30 +1,33 @@
 import beans.*;
+import calculator.TripCalculator;
 import dal.DAL;
-import org.hamcrest.core.IsEqual;
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.LinkedList;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
+
+@ContextConfiguration(locations = "classpath:spring/spring-di-sample-annotation-context.xml")
+@RunWith(SpringJUnit4ClassRunner.class)
 public class TripCalculatorTest
 {
-
+    @Resource(name = "DAL")
+    DAL d;
+    @Resource(name = "calculator.TripCalculator")
     private TripCalculator calculator;
     LinkedList<Route> liste;
     @Before
-    public void init() throws IOException {
-
-        calculator = new TripCalculator();
-        DAL d = new DAL();
+    public void init() throws IOException
+    {
         liste = d.getRoutes();
-
     }
 
 

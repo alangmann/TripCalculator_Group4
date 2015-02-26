@@ -1,13 +1,12 @@
 package beans;
 
-import org.springframework.stereotype.Repository;
-
-@Repository("Vehicle")
 public class Vehicle
 {
     private double averageConsumption;
     private FuelType typeOfFuel;
     private int cargo;
+
+
 
     public Vehicle(double averageConsumption, FuelType typeOfFuel, int cargo)
     {

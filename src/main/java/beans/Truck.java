@@ -1,8 +1,6 @@
 package beans;
 
-import org.springframework.stereotype.Repository;
 
-@Repository("Truck")
 public class Truck extends Vehicle
 {
     private int axles;

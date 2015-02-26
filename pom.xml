@@ -35,6 +35,7 @@
             <scope>test</scope>
             <version>3.2.2.RELEASE</version>
         </dependency>
+
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>

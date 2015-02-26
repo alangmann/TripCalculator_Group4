@@ -4,24 +4,19 @@ import beans.Route;
 import beans.RouteType;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
 import javax.swing.*;
 import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-/**
- * Created by Enis Lushtaku on 04.12.2014.
- */
 @Repository("DAL")
 public class DAL
 {
     private String routesPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "routes.csv";
     private String sprit_dbPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "sprit_db.csv";
 
-    public DAL()
-    {
-    }
 
     public LinkedList<Route> getRoutes() throws IOException
     {

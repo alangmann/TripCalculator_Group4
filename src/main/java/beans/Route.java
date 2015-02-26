@@ -1,8 +1,5 @@
 package beans;
 
-import org.springframework.stereotype.Repository;
-
-@Repository("Route")
 public class Route
 {
     private double distance;
