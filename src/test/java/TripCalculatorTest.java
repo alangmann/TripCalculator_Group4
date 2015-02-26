@@ -6,11 +6,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.LinkedList;
-
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 
@@ -24,6 +22,7 @@ public class TripCalculatorTest
     @Resource(name = "calculator.TripCalculator")
     private TripCalculator calculator;
     LinkedList<Route> liste;
+
     @Before
     public void init() throws IOException
     {
