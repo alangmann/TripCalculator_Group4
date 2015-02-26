@@ -1,6 +1,5 @@
 package beans;
 
-
 public class Truck extends Vehicle
 {
     private int axles;

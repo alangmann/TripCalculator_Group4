@@ -132,7 +132,6 @@ public class TripCalculator
 
     public Double calculateTotalCostOfRoute(Route r, Vehicle v, String dayofweek)
     {
-
         ArrayList<Double> preise = null;
         if(r!=null && v!=null && dayofweek!= null) {
             try {
@@ -158,12 +157,7 @@ public class TripCalculator
         {
             return  null;
         }
-
-
-
-
     }
-
 
     public static void main(String[] args)
     {

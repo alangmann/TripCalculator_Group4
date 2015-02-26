@@ -1,13 +1,9 @@
 package dal;
-
 import beans.Route;
 import beans.RouteType;
 import org.springframework.stereotype.Repository;
-
 import javax.annotation.Resource;
-import javax.swing.*;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -16,7 +12,6 @@ public class DAL
 {
     private String routesPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "routes.csv";
     private String sprit_dbPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "sprit_db.csv";
-
 
     public LinkedList<Route> getRoutes() throws IOException
     {
@@ -64,12 +59,5 @@ public class DAL
         }
 
         return null;
-
-
     }
-
-
-
-
-
 }

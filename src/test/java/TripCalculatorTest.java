@@ -12,7 +12,6 @@ import java.util.LinkedList;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 
-
 @ContextConfiguration(locations = "classpath:spring/spring-di-sample-annotation-context.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class TripCalculatorTest
@@ -28,7 +27,6 @@ public class TripCalculatorTest
     {
         liste = d.getRoutes();
     }
-
 
     @Test
     public void calculateTripSimpleDiesel()
@@ -115,7 +113,4 @@ public class TripCalculatorTest
     {
         assertThat(calculator.calculateCo2Consumption(new Car(5, FuelType.Diesel,100),null), equalTo(null)); // Runden
     }
-
-
-
 }

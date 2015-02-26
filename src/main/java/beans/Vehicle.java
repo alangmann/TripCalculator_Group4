@@ -5,9 +5,6 @@ public class Vehicle
     private double averageConsumption;
     private FuelType typeOfFuel;
     private int cargo;
-
-
-
     public Vehicle(double averageConsumption, FuelType typeOfFuel, int cargo)
     {
         this.averageConsumption = averageConsumption;
@@ -29,5 +26,4 @@ public class Vehicle
     {
         return cargo;
     }
-
 }

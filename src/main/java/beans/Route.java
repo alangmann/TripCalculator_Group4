@@ -1,4 +1,5 @@
 package beans;
+import org.springframework.stereotype.Repository;
 
 public class Route
 {
@@ -37,6 +38,4 @@ public class Route
     {
         return specialFee;
     }
-
-
 }

@@ -9,6 +9,4 @@
 	<context:component-scan base-package="dal" />
 	<context:component-scan base-package="beans" />
 	<context:component-scan base-package="calculator" />
-
-
 </beans>
